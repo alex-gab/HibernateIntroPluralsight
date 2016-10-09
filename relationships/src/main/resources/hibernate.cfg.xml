@@ -15,5 +15,6 @@
 
         <mapping class="com.example.ProteinUser"/>
         <mapping class="com.example.UserHistory"/>
+        <mapping class="com.example.ProteinData"/>
     </session-factory>
 </hibernate-configuration>

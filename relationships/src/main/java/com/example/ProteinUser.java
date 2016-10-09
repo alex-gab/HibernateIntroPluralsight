@@ -11,11 +11,15 @@ public final class ProteinUser {
     @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
     private int id;
     private String name;
-    private int total;
-    private int goal;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private ProteinData proteinData;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @OrderColumn(name = "pos")
     private List<UserHistory> history = new ArrayList<UserHistory>();
+
+    public ProteinUser() {
+        setProteinData(new ProteinData());
+    }
 
     public int getId() {
         return id;
@@ -33,20 +37,13 @@ public final class ProteinUser {
         this.name = name;
     }
 
-    public int getTotal() {
-        return total;
+    public ProteinData getProteinData() {
+        return proteinData;
     }
 
-    public void setTotal(int total) {
-        this.total = total;
-    }
-
-    public int getGoal() {
-        return goal;
-    }
-
-    public void setGoal(int goal) {
-        this.goal = goal;
+    public void setProteinData(ProteinData proteinData) {
+        this.proteinData = proteinData;
+        proteinData.setUser(this);
     }
 
     public List<UserHistory> getHistory() {
