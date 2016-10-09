@@ -17,7 +17,7 @@ public final class Program {
 
         session.beginTransaction();
 
-        ProteinUser loadedUser = session.load(ProteinUser.class, 0);
+        ProteinUser loadedUser = session.load(ProteinUser.class, 1);
         System.out.println(loadedUser.getName());
         System.out.println(loadedUser.getGoal());
 
